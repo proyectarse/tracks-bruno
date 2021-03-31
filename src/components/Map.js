@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
-import { Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { Text, StyleSheet, ActivityIndicator, Dimensions } from 'react-native';
 import MapView, { Polyline, Circle } from 'react-native-maps';
 import { Context as LocationContext } from '../context/LocationContext';
+
+const WINDOW_HEIGHT = Dimensions.get('window').height;
 
 const Map = () => {
 	const {
@@ -52,7 +54,7 @@ const Map = () => {
 
 const styles = StyleSheet.create({
 	map: {
-		height: 300,
+		height: WINDOW_HEIGHT * 0.5,
 	},
 });
 

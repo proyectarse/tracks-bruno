@@ -26,7 +26,16 @@ const TrackCreateScreen = ({ isFocused }) => {
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
-			<Text h2>Create a Track</Text>
+			<Text
+				style={{
+					textAlign: 'center',
+					fontWeight: '600',
+					fontSize: 19,
+					paddingVertical: 10,
+				}}
+			>
+				Create a Track
+			</Text>
 			<Map />
 			{err && <Text>Please enable location services.</Text>}
 			<TrackForm />

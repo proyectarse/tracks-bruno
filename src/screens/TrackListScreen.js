@@ -4,6 +4,7 @@ import {
 	StyleSheet,
 	Text,
 	FlatList,
+	ActivityIndicator,
 	TouchableOpacity,
 } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
@@ -12,12 +13,20 @@ import { Context as TrackContext } from '../context/TrackContext';
 
 const TrackListScreen = ({ navigation }) => {
 	const { state, fetchTracks } = useContext(TrackContext);
+	console.log(state, 'estado inicio');
 
 	return (
 		<>
 			<NavigationEvents onWillFocus={fetchTracks} />
+			{state.loading && (
+				<ActivityIndicator
+					size="large"
+					style={{ marginTop: 100 }}
+					color="#0000ff"
+				/>
+			)}
 			<FlatList
-				data={state}
+				data={state.tracks}
 				keyExtractor={(item) => item._id}
 				renderItem={({ item }) => {
 					return (
@@ -44,7 +53,8 @@ const TrackListScreen = ({ navigation }) => {
 };
 
 TrackListScreen.navigationOptions = {
-	title: 'Tracks',
+	title: 'My Tracks',
+	headerTitleStyle: { alignSelf: 'center' },
 };
 
 const styles = StyleSheet.create({});

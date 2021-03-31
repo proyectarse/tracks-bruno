@@ -11,7 +11,16 @@ const AccountScreen = () => {
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
-			<Text style={{ fontSize: 48 }}>AccountScreen</Text>
+			<Text
+				style={{
+					textAlign: 'center',
+					fontWeight: '600',
+					fontSize: 19,
+					paddingVertical: 10,
+				}}
+			>
+				My Account
+			</Text>
 			<Spacer>
 				<Button title="Sign Out" onPress={signout} />
 			</Spacer>
