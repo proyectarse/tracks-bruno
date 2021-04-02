@@ -13,7 +13,7 @@ import { Context as TrackContext } from '../context/TrackContext';
 
 const TrackListScreen = ({ navigation }) => {
 	const { state, fetchTracks } = useContext(TrackContext);
-	console.log(state.tracks, state.loading, 'estado inicio');
+	// console.log(state.tracks, state.loading, 'estado inicio');
 
 	return (
 		<>
