@@ -23,7 +23,9 @@ const TrackNavigator = createStackNavigator({
 
 TrackNavigator.navigationOptions = {
 	tabBarLabel: 'My Tracks',
-	tabBarIcon: <FontAwesome5 name="route" size={24} color="black" />,
+	tabBarIcon: ({ tintColor }) => (
+		<FontAwesome5 name="route" size={24} color={tintColor} />
+	),
 };
 
 const switchNavigator = createSwitchNavigator({
@@ -32,11 +34,23 @@ const switchNavigator = createSwitchNavigator({
 		Signup: SignupScreen,
 		Signin: SigninScreen,
 	}),
-	mainFlow: createBottomTabNavigator({
-		trackListFlow: TrackNavigator,
-		TrackCreate: TrackCreateScreen,
-		Account: AccountScreen,
-	}),
+	mainFlow: createBottomTabNavigator(
+		{
+			trackListFlow: TrackNavigator,
+			TrackCreate: TrackCreateScreen,
+			Account: AccountScreen,
+		},
+		{
+			tabBarOptions: {
+				activeTintColor: '#ffcc00',
+				inactiveTintColor: '#ffffff',
+				style: {
+					backgroundColor: '#343434',
+					paddingVertical: 5,
+				},
+			},
+		}
+	),
 });
 
 const App = createAppContainer(switchNavigator);

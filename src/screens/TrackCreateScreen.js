@@ -45,7 +45,9 @@ const TrackCreateScreen = ({ isFocused }) => {
 
 TrackCreateScreen.navigationOptions = {
 	tabBarLabel: 'Add Track',
-	tabBarIcon: <Feather name="plus" size={24} color="black" />,
+	tabBarIcon: ({ tintColor }) => (
+		<Feather name="plus" size={24} color={tintColor} />
+	),
 };
 
 const styles = StyleSheet.create({});

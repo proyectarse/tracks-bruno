@@ -30,7 +30,9 @@ const AccountScreen = () => {
 
 AccountScreen.navigationOptions = {
 	tabBarLabel: 'My Account',
-	tabBarIcon: <Feather name="user" size={24} color="black" />,
+	tabBarIcon: ({ tintColor }) => (
+		<Feather name="user" size={24} color={tintColor} />
+	),
 };
 
 const styles = StyleSheet.create({});

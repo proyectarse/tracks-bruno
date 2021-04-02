@@ -13,7 +13,7 @@ import { Context as TrackContext } from '../context/TrackContext';
 
 const TrackListScreen = ({ navigation }) => {
 	const { state, fetchTracks } = useContext(TrackContext);
-	console.log(state, 'estado inicio');
+	console.log(state.tracks, state.loading, 'estado inicio');
 
 	return (
 		<>
@@ -25,29 +25,33 @@ const TrackListScreen = ({ navigation }) => {
 					color="#0000ff"
 				/>
 			)}
-			<FlatList
-				data={state.tracks}
-				keyExtractor={(item) => item._id}
-				renderItem={({ item }) => {
-					return (
-						<TouchableOpacity
-							onPress={() =>
-								navigation.navigate('TrackDetail', {
-									_id: item._id,
-									name: item.name,
-								})
-							}
-						>
-							<ListItem>
-								<ListItem.Content>
-									<ListItem.Title>{item.name}</ListItem.Title>
-								</ListItem.Content>
-								<ListItem.Chevron />
-							</ListItem>
-						</TouchableOpacity>
-					);
-				}}
-			/>
+			{!state.loading && (
+				<FlatList
+					data={state.tracks}
+					keyExtractor={(item) => item._id}
+					renderItem={({ item }) => {
+						return (
+							<TouchableOpacity
+								onPress={() =>
+									navigation.navigate('TrackDetail', {
+										_id: item._id,
+										name: item.name,
+									})
+								}
+							>
+								<ListItem>
+									<ListItem.Content>
+										<ListItem.Title>
+											{item.name}
+										</ListItem.Title>
+									</ListItem.Content>
+									<ListItem.Chevron />
+								</ListItem>
+							</TouchableOpacity>
+						);
+					}}
+				/>
+			)}
 		</>
 	);
 };

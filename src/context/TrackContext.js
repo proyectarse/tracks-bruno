@@ -4,7 +4,7 @@ import trackerApi from '../api/tracker';
 const trackReducer = (state, action) => {
 	switch (action.type) {
 		case 'loading_fetch_tracks':
-			return { tracks: [], loading: true };
+			return { ...state, loading: true };
 		case 'fetch_tracks':
 			return { ...state, tracks: action.payload };
 		case 'stop_loading_fetch_tracks':

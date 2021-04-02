@@ -4,11 +4,15 @@ import { Context as TrackContext } from '../context/TrackContext';
 import MapView, { Polyline } from 'react-native-maps';
 
 const TrackDetailScreen = ({ navigation }) => {
-	const { state } = useContext(TrackContext);
+	const {
+		state: { tracks },
+	} = useContext(TrackContext);
 	const _id = navigation.getParam('_id');
 
-	const track = state.find((tra) => tra._id === _id);
+	const track = tracks.find((tra) => tra._id === _id);
 	const initalCoords = track.locations[0].coords;
+
+	console.log(track, 'el track detail');
 
 	return (
 		<>
